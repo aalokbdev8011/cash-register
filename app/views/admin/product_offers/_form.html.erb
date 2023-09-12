@@ -11,7 +11,6 @@
     </div>
   <% end %>
 
-
   <div>
     <%= form.label :product_id, 'Product', style: "display: block" %>
     <%= form.collection_select :product_id, Product.all, :id, :name %>
