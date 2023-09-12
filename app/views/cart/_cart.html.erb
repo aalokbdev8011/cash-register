@@ -1,0 +1,10 @@
+<%= turbo_frame_tag 'cart' do %>
+  <h1>Cart </h1>
+  <% unless @cart.products.count.zero?  %>
+    <%= render 'cart_products' %>
+    <p>Total: <%= @cart.total %> <span><%= link_to 'Place Order', '#', class: 'btn btn-success btn-sm' %></span></p>
+
+  <% else %>
+    <p>your cart is empty</p>
+  <% end %>
+<% end %>

@@ -1,0 +1,43 @@
+<table>
+  <% @cart.carts_products.each do |cart_product| %>
+    <% product = cart_product.product %>
+
+      <div id="<%= "cart-#{product.id}"%>">
+        <tr>
+          <td><%= product.product_code %></td>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td>
+
+            <%= form_with(url: cart_add_path) do |f| %>
+              <%= f.hidden_field :product_id, value: product.id %>
+              <table>
+                <tr>
+                  <td>
+                    <%= f.number_field :quantity, value: cart_product.quantity, min: 1, class: 'product-card-quantity-input' %>
+                  </td>
+                  <td>
+                    <%= f.submit 'Update Item' %>
+                  </td>
+                </tr>
+              </table>
+            <% end %>
+
+            <%= form_with(url: cart_remove_path) do |f| %>
+              <%= f.hidden_field :product_id, value: cart_product.id %>
+              <table>
+                <tr>
+                  <td>
+                    <%= f.submit 'X' %>
+                  </td>
+                </tr>
+              </table>
+            <% end %>
+          </td>
+          <td>
+            <span>Total: </span><%= cart_product.total %>
+          </td>
+        </tr>
+      </div>
+  <% end %>
+</table>
