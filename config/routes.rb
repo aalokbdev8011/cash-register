@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   scope module: 'admin', as: 'admin' do
     resources :products
     resources :orders, only: %i[index create]
+    resources :product_offers
   end
 end
