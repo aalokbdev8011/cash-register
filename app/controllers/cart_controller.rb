@@ -38,15 +38,4 @@ class CartController < ApplicationController
       end
     end
   end
-
-  private
-
-  def initialize_cart
-    @cart ||= Cart.find_by(id: session[:cart_id])
-
-    return unless @cart.blank?
-
-    @cart = Cart.create!
-    session[:cart_id] = @cart.id
-  end
 end

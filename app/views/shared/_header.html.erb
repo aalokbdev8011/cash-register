@@ -1,10 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-  <% if user_signed_in? %>
-    <%= link_to 'CashRegister', "#", class: 'navbar-brand' %>
-  <% else %>
-    <%= link_to 'CashRegister', root_path, class: 'navbar-brand' %>
-  <% end %>
+    <%= link_to 'CashRegister', user_signed_in? ? admin_orders_path : root_path, class: 'navbar-brand' %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -20,7 +16,7 @@
               Admin Panel
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to 'Orders', '#', class: 'dropdown-item' %></li>
+              <li><%= link_to 'Orders', admin_orders_path, class: 'dropdown-item' %></li>
               <li><%= link_to 'Products', admin_products_path, class: 'dropdown-item' %></li>
               <li><%= link_to 'Special offers', '#', class: 'dropdown-item' %></li>
             </ul>

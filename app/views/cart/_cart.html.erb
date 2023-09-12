@@ -2,7 +2,7 @@
   <h1>Cart </h1>
   <% unless @cart.products.count.zero?  %>
     <%= render 'cart_products' %>
-    <p>Total: <%= @cart.total %> <span><%= link_to 'Place Order', '#', class: 'btn btn-success btn-sm' %></span></p>
+    <p>Total: <%= @cart.total %> <span><%= button_to 'Place Order', admin_orders_path(cart: @cart), class: 'btn btn-success btn-sm' %></span></p>
 
   <% else %>
     <p>your cart is empty</p>
