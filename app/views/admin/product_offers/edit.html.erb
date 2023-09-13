@@ -1,9 +1,8 @@
-<h1>Editing product offer</h1>
-
-<%= render "form", product_offer: @product_offer %>
-
+<h2 class="text-center py-3">Editing product offer</h2>
+<div class="form-wrap mx-auto rounded bg-white p-4 my-3 border border-dark-subtle">
+  <%= render "form", product_offer: @product_offer %>
+</div>
 <br>
-
-<div>
-  <%= link_to "Back to product offers", admin_product_offers_path %>
+<div class="text-end px-3">
+  <%= link_to "Back to product offers", admin_product_offers_path, class:'text-success' %>
 </div>

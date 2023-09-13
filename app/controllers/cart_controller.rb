@@ -2,7 +2,7 @@ class CartController < ApplicationController
   before_action :initialize_cart
 
   def show
-    @products = Product.order(created_at: :asc).all
+    @products = Product.includes(:product_offers).order(created_at: :asc).all
   end
 
   def add

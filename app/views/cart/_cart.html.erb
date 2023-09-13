@@ -1,10 +1,13 @@
 <%= turbo_frame_tag 'cart' do %>
-  <h1>Cart </h1>
-  <% unless @cart.products.count.zero?  %>
-    <%= render 'cart_products' %>
-    <p>Total: <%= @cart.total %> <span><%= button_to 'Place Order', admin_orders_path(cart: @cart), class: 'btn btn-success btn-sm' %></span></p>
-
-  <% else %>
-    <p>your cart is empty</p>
-  <% end %>
+  <div class="mx-auto product-wrap">
+    <h2 class="mb-3">Cart </h2>
+    <% unless @cart.products.count.zero?  %>
+      <%= render 'cart_products' %>
+      <div class="text-end">
+        <p>Card Total: <%= @cart.total %> <span><%= button_to 'Place Order', admin_orders_path(cart: @cart), class: 'btn btn-success' %></span></p>
+      </div>
+    <% else %>
+      <p>your cart is empty</p>
+    <% end %>
+  </div>
 <% end %>

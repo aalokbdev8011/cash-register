@@ -1,8 +1,11 @@
 <%= render 'cart' %>
 
 <hr/>
-<h1>Available Products</h1>
-
-<% @products.each do |product| %>
-  <%= render partial: 'product_card', locals: { product: product } %>
-<% end %>
+<div class="mx-auto product-wrap">
+  <h2 class="mb-3">Available Products</h2>
+  <div class="row mx-0 card-scroll">
+    <% @products.each do |product| %>
+      <%= render partial: 'product_card', locals: { product: product } %>
+    <% end %>
+  </div>
+</div>

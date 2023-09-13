@@ -12,7 +12,7 @@
 
   <body>
     <%= render 'shared/header' %>
-    <p><%= notice %></p>
+    <%= render partial: 'shared/alert', locals: { message: notice } %>
 
     <%= yield %>
   </body>

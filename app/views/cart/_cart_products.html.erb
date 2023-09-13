@@ -1,43 +1,50 @@
-<table>
-  <% @cart.carts_products.each do |cart_product| %>
-    <% product = cart_product.product %>
+<div class="table-responsive table-scroll">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Product Code</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Actions</th>
+        <th>Product Total</th>
+      </tr>
+    </thead>
+    <% @cart.carts_products.each do |cart_product| %>
+      <% product = cart_product.product %>
 
-      <div id="<%= "cart-#{product.id}"%>">
-        <tr>
-          <td><%= product.product_code %></td>
-          <td><%= product.name %></td>
-          <td><%= product.price %></td>
-          <td>
+        <div id="<%= "cart-#{product.id}"%>">
+          <tr>
+            <td><%= product.product_code %></td>
+            <td><%= product.name %></td>
+            <td><%= product.price %></td>
+            <td class="d-flex align-items-center gap-2">
 
-            <%= form_with(url: cart_add_path) do |f| %>
-              <%= f.hidden_field :product_id, value: product.id %>
-              <table>
-                <tr>
-                  <td>
-                    <%= f.number_field :quantity, value: cart_product.quantity, min: 1, class: 'product-card-quantity-input' %>
-                  </td>
-                  <td>
-                    <%= f.submit 'Update Item' %>
-                  </td>
-                </tr>
-              </table>
-            <% end %>
+              <%= form_with(url: cart_add_path) do |f| %>
+                <%= f.hidden_field :product_id, value: product.id %>
+                <table>
+                  <tr>
+                    <td>
+                      <%= f.number_field :quantity, value: cart_product.quantity, min: 1, class: 'rounded-1 ps-2 card-quantity-input' %>
+                    </td>
+                    <td>
+                      <%= f.submit 'Update Item', class: 'btn btn-success btn-sm ms-2' %>
+                    </td>
+                  </tr>
+                </table>
+              <% end %>
 
-            <%= form_with(url: cart_remove_path) do |f| %>
-              <%= f.hidden_field :product_id, value: cart_product.id %>
-              <table>
-                <tr>
-                  <td>
-                    <%= f.submit 'X' %>
-                  </td>
-                </tr>
-              </table>
-            <% end %>
-          </td>
-          <td>
-            <span>Total: </span><%= cart_product.total %>
-          </td>
-        </tr>
-      </div>
-  <% end %>
-</table>
+              <%= form_with(url: cart_remove_path) do |f| %>
+                <%= f.hidden_field :product_id, value: cart_product.id %>
+
+                      <%= f.submit 'X', class: 'btn btn-dark btn-sm' %>
+
+              <% end %>
+            </td>
+            <td>
+              <span>Total: </span><%= cart_product.total %>
+            </td>
+          </tr>
+        </div>
+    <% end %>
+  </table>
+</div>

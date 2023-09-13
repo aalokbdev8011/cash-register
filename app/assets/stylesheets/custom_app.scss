@@ -1,6 +1,35 @@
-.product-card {
-  width: 18rem;
+.card-quantity-input {
+  width: 4rem;
 }
 .product-card-quantity-input{
-  width: 10rem;
+  width: 8rem;
+}
+.product-wrap {
+  width: 85%;
+}
+.product-card {
+  box-shadow: 0 2px 14px 1px #ccc;
+}
+.product-card input{
+  min-width: 125px;
+}
+.table-scroll {
+  overflow: auto;
+  max-height: 300px;
+}
+.card-scroll {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.admin-product {
+  min-width: 125px
+}
+.form-wrap {
+  width: 400px;
+  box-shadow: 0 2px 14px 1px #ccc;
+}
+.form-wrap input,
+.form-wrap select {
+  width: 100%;
 }

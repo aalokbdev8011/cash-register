@@ -2,7 +2,6 @@
   <% if product_offer.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(product_offer.errors.count, "error") %> prohibited this admin_product_offer from being saved:</h2>
-
       <ul>
         <% product_offer.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,23 +9,19 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
+  <div class="mb-3">
     <%= form.label :product_id, 'Product', style: "display: block" %>
-    <%= form.collection_select :product_id, Product.all, :id, :name %>
+    <%= form.collection_select :product_id, Product.all, :id, :name, {}, {class: 'border border-dark-subtle rounded p-2 bg-white'} %>
   </div>
-
-  <div>
+  <div class="mb-3">
     <%= form.label :for_quantity, style: "display: block" %>
-    <%= form.number_field :for_quantity %>
+    <%= form.number_field :for_quantity, class: 'border border-dark-subtle rounded p-2 bg-white' %>
   </div>
-
-  <div>
+  <div class="mb-3">
     <%= form.label :discount, style: "display: block" %>
-    <%= form.text_field :discount %>
+    <%= form.text_field :discount, class: 'border border-dark-subtle rounded p-2 bg-white' %>
   </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="text-end">
+    <%= form.submit class: 'btn btn-success btn-sm rounded p-2 fs-6'%>
   </div>
 <% end %>

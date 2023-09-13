@@ -1,21 +1,18 @@
-<div class="card product-card" id="<%= dom_id product %>">
-  <div class="card-body">
-    <h5 class="card-title"><%= product.name %></h5>
-    <p class="card-text">Price: <%= product.price %></p>
-    <div>
-      <%= form_with(url: cart_add_path) do |f| %>
-        <%= f.hidden_field :product_id, value: product.id %>
-        <table>
-          <tr>
-            <td>
-              <%= f.number_field :quantity, value: 0, min: 1, class: 'product-card-quantity-input' %>
-            </td>
-            <td>
-              <%= f.submit 'Add Item', disable_with: 'Submiting...' %>
-            </td>
-          </tr>
-        </table>
-      <% end %>
+<div class="col-xl-3 col-md-4 col-sm-6 col-12" id="<%= dom_id product %>">
+  <div class="card product-card mb-3">
+    <div class="card-body">
+      <h5 class="card-title"><%= product.name %></h5>
+      <p class="card-text">Price: <%= product.price %></p>
+      <div class="pt-3" >
+        <%= form_with(url: cart_add_path) do |f| %>
+          <%= f.hidden_field :product_id, value: product.id %>
+          <div class="d-flex align-items-center gap-3 justify-content-between">
+            <%= f.number_field :quantity, value: 0, min: 1, class: 'rounded-1 product-card-quantity-input ps-3' %>
+
+            <%= f.submit 'Add Item', disable_with: 'Submiting...', class: 'btn btn-success btn-sm px-3' %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+</div >

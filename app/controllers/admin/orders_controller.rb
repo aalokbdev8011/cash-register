@@ -18,7 +18,7 @@ module Admin
         format.turbo_stream do
           render turbo_stream: [
             turbo_stream.replace('cart', partial: 'cart/cart', locals: { cart: @cart }),
-            turbo_stream.prepend('cart', html: 'Order places successfully!'),
+            turbo_stream.prepend('cart', partial: 'shared/alert', locals: { message: 'Order places successfully!' }),
           ]
         end
       end
