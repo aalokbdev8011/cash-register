@@ -3,7 +3,7 @@ module Admin
     before_action :set_product_offer, only: %i[show edit update destroy]
 
     def index
-      @product_offers = ProductOffer.all
+      @product_offers = ProductOffer.order(created_at: :asc).all
     end
 
     def show; end

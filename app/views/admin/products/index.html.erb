@@ -1,11 +1,30 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Products</h1>
-
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-  <% end %>
-</div>
-
 <%= link_to "New product", new_admin_product_path %>
+
+<% unless @products.blank? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Code</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each_with_index do |product, index| %>
+        <tr>
+          <th scope="row"><%= index+1 %></th>
+          <td><%= product.product_code %></td>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td>
+            <%= link_to "Edit", edit_admin_product_path(product) , class: 'btn btn-primary btm-sm'%>
+            <%= button_to "Delete", admin_product_path(product) , class: 'btn btn-danger btm-sm', method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

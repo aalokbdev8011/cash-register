@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Product offers</h1>
 <%= link_to "New product offer", new_admin_product_offer_path %>
 
@@ -11,6 +9,7 @@
         <th scope="col">Product Name</th>
         <th scope="col">Discount</th>
         <th scope="col">Applied on Quantity above</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -20,15 +19,12 @@
           <td><%= product_offer.product.name %></td>
           <td><%= product_offer.discount %></td>
           <td><%= product_offer.for_quantity %></td>
+          <td>
+            <%= link_to "Edit", edit_admin_product_offer_path(product_offer) , class: 'btn btn-primary btm-sm'%>
+            <%= button_to "Delete", admin_product_offer_path(product_offer) , class: 'btn btn-danger btm-sm', method: :delete %>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% end %>
-
-
-
-
-
-
-

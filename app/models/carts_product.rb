@@ -8,6 +8,10 @@ class CartsProduct < ApplicationRecord
     return product.price * quantity unless ProductOffer.where(product:).where('for_quantity <= ?', quantity).exists?
 
     discounts = ProductOffer.where(product:).where('for_quantity <= ?', quantity).pluck(:discount)
-    discounts.map { |discount| product.price * (discount / 100) }.min.round(2) * quantity
+    final_discounted_price = discounts.map do |discount|
+      product.price * (1 - (1 * (discount / 100)))
+    end.min
+
+    (final_discounted_price * quantity).round(2)
   end
 end

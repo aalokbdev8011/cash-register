@@ -2,7 +2,7 @@ module Admin
   class OrdersController < AdminController
     skip_before_action :authenticate_user!, only: %i[create]
     def index
-      @orders = Order.includes(order_products: :product).order(created_at: :desc).all
+      @orders = Order.includes(order_products: :product).order(created_at: :asc).all
     end
 
     def create

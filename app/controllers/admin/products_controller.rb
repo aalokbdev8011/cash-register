@@ -3,7 +3,7 @@ module Admin
     before_action :set_product, only: %i[show edit update destroy]
 
     def index
-      @products = Product.all
+      @products = Product.order(created_at: :asc).all
     end
 
     def show; end
@@ -18,7 +18,7 @@ module Admin
       @product = Product.new(product_params)
 
       if @product.save
-        redirect_to admin_product_path(@product), notice: 'Product was successfully created.'
+        redirect_to admin_products_path, notice: 'Product was successfully created.'
       else
         render :new, status: :unprocessable_entity
       end
@@ -26,7 +26,7 @@ module Admin
 
     def update
       if @product.update(product_params)
-        redirect_to admin_product_path(@product), notice: 'Product was successfully updated.', status: :see_other
+        redirect_to admin_products_path, notice: 'Product was successfully updated.', status: :see_other
       else
         render :edit, status: :unprocessable_entity
       end
