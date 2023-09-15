@@ -6,8 +6,6 @@ module Admin
       @products = Product.order(created_at: :asc).all
     end
 
-    def show; end
-
     def new
       @product = Product.new
     end

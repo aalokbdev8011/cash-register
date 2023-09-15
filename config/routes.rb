@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   scope module: 'admin', as: 'admin' do
-    resources :products
+    resources :products, except: %i[show]
     resources :orders, only: %i[index create]
-    resources :product_offers
+    resources :product_offers, except: %i[show]
   end
 end
